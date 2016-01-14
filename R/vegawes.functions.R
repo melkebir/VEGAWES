@@ -37,7 +37,7 @@ initializeParams <- function(inputfile){
 runGATK <- function(params){
   
   # Run the GATK command
-  commandString = paste("java -jar", params$path.to.GATK ,"-T DepthOfCoverage -omitBaseOutput -omitLocusTable -R", params$reference.file , "-L", params$interval.list.file, sep=" ")  
+  commandString = paste("java -jar", params$path.to.GATK ,"-T DepthOfCoverage -allowPotentiallyMisencodedQuals -omitBaseOutput -omitLocusTable -R", params$reference.file , "-L", params$interval.list.file, sep=" ")  
   
   system(paste(commandString, "-I", params$normal.inputfile, "-o", params$normal.outfile))  #Normal File
   system(paste(commandString, "-I", params$tumor.inputfile, "-o",params$tumor.outfile))     #Tumor File
